@@ -3,15 +3,17 @@ import AuthContex from '../contexs/auth';
 
 import AdminRoutes from './admin-routes';
 import PublicRoutes from './public-routes';
+import ClientsRoutes from './clients-routes';
 
 const Routes = () => {
-  const {signed, user} = useContext(AuthContex);
+  let {signed, user} = useContext(AuthContex);
 
+  console.log(user);
   if (signed) {
     if (user.type === 'admin') {
       return <AdminRoutes />;
     } else if (user.type === 'client') {
-      console.log('rotas dos clientes');
+      return <ClientsRoutes />;
     } else {
       console.log('rotas dos  motoritas');
     }

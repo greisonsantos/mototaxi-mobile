@@ -1,9 +1,9 @@
 export function passwordValidator(password) {
   if (!password) {
-    return 'Senha não pode ser vazio';
+    return 'O campo senha é obrigatório.';
   }
   if (password.length < 5) {
-    return 'Senha deve ser maior que 5 caracteres';
+    return 'A senha deve ser maior que 5 caracteres';
   }
   return '';
 }

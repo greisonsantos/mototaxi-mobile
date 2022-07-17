@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {TouchableOpacity, StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import Background from '../../components/Background';
@@ -6,27 +6,28 @@ import Logo from '../../components/Logo';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
-import BackButton from '../../components/BackButton';
 import {theme} from '../../core/theme';
-import {emailValidator} from '../../helpers/emailValidator';
+import {usernameValidator} from '../../helpers/usernameValidator';
 import {passwordValidator} from '../../helpers/passwordValidator';
 
+import AuthContex from '../../contexs/auth';
+
 export default function LoginScreen({navigation}) {
-  const [email, setEmail] = useState({value: '', error: ''});
+  const [username, setusername] = useState({value: '', error: ''});
   const [password, setPassword] = useState({value: '', error: ''});
 
+  const {signIn} = useContext(AuthContex);
+
   const onLoginPressed = () => {
-    const emailError = emailValidator(email.value);
+    const usernameError = usernameValidator(username.value);
     const passwordError = passwordValidator(password.value);
-    if (emailError || passwordError) {
-      setEmail({...email, error: emailError});
+    if (usernameError || passwordError) {
+      setusername({...username, error: usernameError});
       setPassword({...password, error: passwordError});
       return;
     }
-    navigation.reset({
-      index: 0,
-      routes: [{name: 'Dashboard'}],
-    });
+
+    signIn(username.value, password.value);
   };
 
   return (
@@ -34,19 +35,19 @@ export default function LoginScreen({navigation}) {
       <Logo />
       <Header>Bem vindo de volta!</Header>
       <TextInput
-        label="Email"
+        label="usuario"
         returnKeyType="next"
-        value={email.value}
-        onChangeText={text => setEmail({value: text, error: ''})}
-        error={!!email.error}
-        errorText={email.error}
+        value={username.value}
+        onChangeText={text => setusername({value: text, error: ''})}
+        error={!!username.error}
+        errorText={username.error}
         autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
+        autoCompleteType="username"
+        textContentType="usernameAddress"
+        keyboardType="username-address"
       />
       <TextInput
-        label="Password"
+        label="senha"
         returnKeyType="done"
         value={password.value}
         onChangeText={text => setPassword({value: text, error: ''})}

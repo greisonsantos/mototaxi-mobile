@@ -1,4 +1,6 @@
 export function nameValidator(name) {
-  if (!name) return "Name  não pode ser vazio"
-  return ''
+  if (!name) {
+    return 'O nome usuário e obrigatório';
+  }
+  return '';
 }

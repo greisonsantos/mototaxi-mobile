@@ -1,10 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
+import {View, Text} from 'react-native';
 
-// import { Container } from './styles';
+import styles from './styles';
 
-const Home = () => {
-  return <View />;
-}
-
+const Home = ({}) => {
+  return (
+    <View style={styles.container}>
+      <Text> olha</Text>
+    </View>
+  );
+};
 export default Home;

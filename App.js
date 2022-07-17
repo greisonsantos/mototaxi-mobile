@@ -1,37 +1,17 @@
-import React from 'react';
-import {Provider} from 'react-native-paper';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {theme} from './src/core/theme';
-import {
-  StartScreen,
-  LoginScreen,
-  RegisterScreen,
-  ResetPasswordScreen,
-  Dashboard,
-} from './src/screens';
+import React, {useEffect} from 'react';
+import {StatusBar} from 'react-native';
 
-const Stack = createStackNavigator();
+import Routes from './src/routes';
+import {AuthProvider} from './src/contexs/auth';
+import Toast from 'react-native-toast-message';
 
-export default function App() {
+StatusBar.setBarStyle('dark-content');
+const App = () => {
   return (
-    <Provider theme={theme}>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="StartScreen"
-          screenOptions={{
-            headerShown: false,
-          }}>
-          <Stack.Screen name="StartScreen" component={StartScreen} />
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-          <Stack.Screen name="Dashboard" component={Dashboard} />
-          <Stack.Screen
-            name="ResetPasswordScreen"
-            component={ResetPasswordScreen}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   );
-}
+};
+
+export default App;

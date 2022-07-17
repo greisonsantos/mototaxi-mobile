@@ -35,9 +35,7 @@ export default function RegisterScreen({navigation}) {
 
   return (
     <Background>
-      <BackButton goBack={navigation.goBack} />
       <ScrollView style={styles.container}>
-        {/*  <Logo /> */}
         <Header>Criar conta</Header>
         <TextInput
           label="Nome"

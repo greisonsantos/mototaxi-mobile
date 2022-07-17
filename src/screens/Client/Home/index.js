@@ -19,7 +19,13 @@ export default function Home({navigation}) {
       <View style={styles.container}>
         <TouchableOpacity
           disabled={false}
-          onPress={() => {}}
+          onPress={() => {
+            navigation.navigate('CreateRace', {
+              parmas: {
+                type: 'motocycle',
+              },
+            });
+          }}
           style={styles.card}>
           <View style={styles.viewIcon}>
             <Image
@@ -34,7 +40,13 @@ export default function Home({navigation}) {
 
         <TouchableOpacity
           disabled={false}
-          onPress={() => {}}
+          onPress={() => {
+            navigation.navigate('CreateRace',{
+              parmas: {
+                type: 'car',
+              },
+            });
+          }}
           style={styles.card}>
           <View style={styles.viewIcon}>
             <Image
@@ -48,25 +60,11 @@ export default function Home({navigation}) {
         </TouchableOpacity>
       </View>
 
-      <Button
-        mode="outlined"
-        onPress={() =>
-          navigation.reset({
-            index: 0,
-            routes: [{name: 'StartScreen'}],
-          })
-        }>
+      <Button mode="outlined" onPress={() => navigation.navigate('ListRace')}>
         Minhas Corridas
       </Button>
 
-      <Button
-        mode="outlined"
-        onPress={() =>
-          navigation.reset({
-            index: 0,
-            routes: [{name: 'StartScreen'}],
-          })
-        }>
+      <Button mode="outlined" onPress={() => navigation.navigate('Profile')}>
         Perfil
       </Button>
 

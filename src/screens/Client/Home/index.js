@@ -6,9 +6,10 @@ import {Icon} from 'react-native-elements';
 import Button from '../../../components/Button';
 import AuthContex from '../../../contexs/auth';
 import styles from './styles';
+import { theme } from '../../../core/theme';
 
 export default function Home({navigation}) {
-  const {signOut} = useContext(AuthContex);
+  const {signOut, user} = useContext(AuthContex);
 
   const handlesignOut = () => {
     signOut();
@@ -16,6 +17,25 @@ export default function Home({navigation}) {
 
   return (
     <Background>
+      <Text
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{
+          fontWeight: 'bold',
+          color: theme.colors.primary,
+          fontSize: 23,
+        }}
+        numberOfLines={1}>
+        Bem vindo !
+      </Text>
+      <Text
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{
+          fontWeight: 'bold',
+          color: theme.colors.primary,
+          fontSize: 18,
+        }}>
+        {user?.full_name}
+      </Text>
       <View style={styles.container}>
         <TouchableOpacity
           disabled={false}
@@ -41,7 +61,7 @@ export default function Home({navigation}) {
         <TouchableOpacity
           disabled={false}
           onPress={() => {
-            navigation.navigate('CreateRace',{
+            navigation.navigate('CreateRace', {
               parmas: {
                 type: 'car',
               },

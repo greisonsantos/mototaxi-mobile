@@ -1,33 +1,33 @@
 export function nameValidator(name) {
   if (!name) {
-    return 'O nome usuário e obrigatório';
+    return 'O campo nome e obrigatório';
   }
   return '';
 }
 
-export function usernameValidator(email) {
-  if (!email) {
+export function usernameValidator(username) {
+  if (!username) {
     return 'O campo usuário e obrigatório.';
   }
   return '';
 }
 export function emailValidator(email) {
   if (!email) {
-    return 'O campo usuário e obrigatório.';
+    return 'O campo e-mail e obrigatório.';
   }
   return '';
 }
 
-export function phoneValidator(email) {
-  if (!email) {
-    return 'O campo usuário e obrigatório.';
+export function phoneValidator(phone) {
+  if (!phone) {
+    return 'O campo telefone e obrigatório.';
   }
   return '';
 }
 
-export function cpfValidator(email) {
-  if (!email) {
-    return 'O campo usuário e obrigatório.';
+export function cpfValidator(cpf) {
+  if (!cpf) {
+    return 'O campo cpf e obrigatório.';
   }
   return '';
 }

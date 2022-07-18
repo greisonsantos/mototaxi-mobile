@@ -4,7 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  ToastAndroid,
+  Keyboard,
 } from 'react-native';
 import {Text} from 'react-native-paper';
 import Background from '../../components/Background';
@@ -23,6 +23,7 @@ import {
 } from '../../helpers/validator';
 import api from '../../services/api';
 import Toast from 'react-native-simple-toast';
+import mask from '../../helpers/mask';
 
 export default function RegisterScreen({navigation}) {
   const [name, setName] = useState({value: '', error: ''});
@@ -41,14 +42,15 @@ export default function RegisterScreen({navigation}) {
     const nameError = nameValidator(name.value);
     const usernameError = usernameValidator(username.value);
     const emailError = emailValidator(email.value);
-    const phoneError = phoneValidator(password.value);
-    const cpfError = cpfValidator(password.value);
+    const phoneError = phoneValidator(phone.value);
+    const cpfError = cpfValidator(cpf.value);
     const passwordError = passwordValidator(password.value);
     const confirmPasswordError = confimPasswordValidator(
       password.value,
       confirmPassword.value,
     );
 
+    Keyboard.dismiss();
     if (
       nameError ||
       usernameError ||
@@ -103,7 +105,7 @@ export default function RegisterScreen({navigation}) {
 
   return (
     <Background>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
         <Header>Criar conta</Header>
         <TextInput
           label="Nome completo"
@@ -139,10 +141,11 @@ export default function RegisterScreen({navigation}) {
           label="Telefone"
           returnKeyType="next"
           value={phone.value}
-          onChangeText={text => setPhone({value: text, error: ''})}
+          onChangeText={text =>
+            setPhone({value: mask.phoneMask(text), error: ''})
+          }
           error={!!phone.error}
           errorText={phone.error}
-          autoCapitalize="none"
           autoCompleteType="phone"
           keyboardType="numeric"
         />
@@ -150,7 +153,9 @@ export default function RegisterScreen({navigation}) {
           label="CPF"
           returnKeyType="next"
           value={cpf.value}
-          onChangeText={text => setCpf({value: text, error: ''})}
+          onChangeText={text =>
+            setCpf({value: mask.validaCpf(text), error: ''})
+          }
           error={!!cpf.error}
           errorText={cpf.error}
           autoCapitalize="none"

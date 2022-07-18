@@ -6,7 +6,7 @@ import {Icon} from 'react-native-elements';
 import Button from '../../../components/Button';
 import AuthContex from '../../../contexs/auth';
 import styles from './styles';
-import { theme } from '../../../core/theme';
+import {theme} from '../../../core/theme';
 
 export default function Home({navigation}) {
   const {signOut, user} = useContext(AuthContex);

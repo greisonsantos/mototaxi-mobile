@@ -7,8 +7,7 @@ import Header from '../../components/Header';
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
 import {theme} from '../../core/theme';
-import {usernameValidator} from '../../helpers/usernameValidator';
-import {passwordValidator} from '../../helpers/passwordValidator';
+import {usernameValidator, passwordValidator} from '../../helpers/validator';
 
 import AuthContex from '../../contexs/auth';
 

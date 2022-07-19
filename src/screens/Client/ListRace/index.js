@@ -44,6 +44,15 @@ const ListRace = () => {
           <Text style={styles.text}> Motorista: {item.full_name}</Text>
           <Text style={styles.text}> Veiculo: {item.vehicle_description}</Text>
           <Text style={styles.text}> Placa: {item.plate}</Text>
+
+          <Text style={styles.text}>
+            {' '}
+            Forma de pagamento:
+            {item.payment_type === 'cash' && ' DINHEIRO'}
+            {item.payment_type === 'card_credit' && ' CARTÃO DE CRÉDITO'}
+            {item.payment_type === 'card_debit' && 'CARTÃO DE DEBITO'}
+            {item.payment_type === 'pix' && ' PIX'}
+          </Text>
         </View>
       </View>
     </View>

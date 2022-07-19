@@ -54,6 +54,6 @@ export function confimPasswordValidator(password, confirmPassword) {
 
 export function addressValidator(address) {
   if (!address) {
-    return 'O campo senha é obrigatório.';
+    return 'O campo endereço é obrigatório.';
   }
 }

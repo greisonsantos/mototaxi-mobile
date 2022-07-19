@@ -51,3 +51,9 @@ export function confimPasswordValidator(password, confirmPassword) {
   }
   return '';
 }
+
+export function addressValidator(address) {
+  if (!address) {
+    return 'O campo senha é obrigatório.';
+  }
+}

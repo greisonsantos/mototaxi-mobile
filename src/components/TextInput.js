@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: theme.colors.surface,
-    height:44,
+    height: 44,
   },
   description: {
     fontSize: 13,

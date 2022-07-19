@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {TouchableOpacity, StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import Background from '../../components/Background';
@@ -12,22 +12,31 @@ import {usernameValidator, passwordValidator} from '../../helpers/validator';
 import AuthContex from '../../contexs/auth';
 
 export default function LoginScreen({navigation}) {
+
+  
   const [username, setusername] = useState({value: '', error: ''});
   const [password, setPassword] = useState({value: '', error: ''});
-
+  const [isLoading, setIsLoading] = useState(false);
   const {signIn} = useContext(AuthContex);
 
   const onLoginPressed = () => {
     const usernameError = usernameValidator(username.value);
     const passwordError = passwordValidator(password.value);
+
     if (usernameError || passwordError) {
       setusername({...username, error: usernameError});
       setPassword({...password, error: passwordError});
       return;
     }
 
+    setIsLoading(true);
     signIn(username.value, password.value);
+    setIsLoading(false);
   };
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <Background>
@@ -60,9 +69,18 @@ export default function LoginScreen({navigation}) {
           {/*  <Text style={styles.forgot}>Esqueceu sua senha?</Text> */}
         </TouchableOpacity>
       </View>
-      <Button mode="contained" onPress={onLoginPressed}>
-        Login
-      </Button>
+      {isLoading ? (
+        <Button
+          mode="contained"
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={{marginTop: 24}}>
+          carregando...
+        </Button>
+      ) : (
+        <Button mode="contained" onPress={onLoginPressed}>
+          Login
+        </Button>
+      )}
       <View style={styles.row}>
         <Text>Não tem uma conta? </Text>
         <TouchableOpacity onPress={() => navigation.replace('RegisterScreen')}>

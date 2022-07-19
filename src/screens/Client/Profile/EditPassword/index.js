@@ -12,8 +12,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles';
 const EditPassword = () => {
-  const [viewPassword, setViewPassword] = useState(true);
-
+  const [viewCurrentyPassword, setViewCurrentyPassword] = useState(true);
+  const [newPassword, setNewPassword] = useState(true);
+  const [confirmPassword, setConfirmPassword] = useState(true);
   return (
     <Background style={styles.container}>
       <View style={styles.inputContainer}>
@@ -22,21 +23,21 @@ const EditPassword = () => {
           style={styles.input}
           autoCapitalize="none"
           autoCorrect={false}
-          placeholderTextColor="#000"
+          placeholderTextColor="#333"
           placeholder="Senha atual"
           underlineColorAndroid="transparent"
-          secureTextEntry={viewPassword}
+          secureTextEntry={viewCurrentyPassword}
           onChangeText={() => {}}
         />
 
-        {viewPassword ? (
+        {viewCurrentyPassword ? (
           <Icon
             name="eye"
             size={22}
             color="#333"
             style={styles.icon}
             onPress={() => {
-              setViewPassword(!viewPassword);
+              setViewCurrentyPassword(!viewCurrentyPassword);
             }}
           />
         ) : (
@@ -46,7 +47,7 @@ const EditPassword = () => {
             color="#333"
             style={styles.icon}
             onPress={() => {
-              setViewPassword(!viewPassword);
+              setViewCurrentyPassword(!viewCurrentyPassword);
             }}
           />
         )}
@@ -58,20 +59,20 @@ const EditPassword = () => {
           autoCapitalize="none"
           autoCorrect={false}
           placeholder="Nova senha"
-          placeholderTextColor="#000"
+          placeholderTextColor="#333"
           underlineColorAndroid="transparent"
-          secureTextEntry={viewPassword}
+          secureTextEntry={newPassword}
           onChangeText={() => {}}
         />
 
-        {viewPassword ? (
+        {newPassword ? (
           <Icon
             name="eye"
             size={22}
             color="#333"
             style={styles.icon}
             onPress={() => {
-              setViewPassword(!viewPassword);
+              setNewPassword(!newPassword);
             }}
           />
         ) : (
@@ -81,7 +82,7 @@ const EditPassword = () => {
             color="#333"
             style={styles.icon}
             onPress={() => {
-              setViewPassword(!viewPassword);
+              setNewPassword(!newPassword);
             }}
           />
         )}
@@ -93,19 +94,19 @@ const EditPassword = () => {
           autoCapitalize="none"
           autoCorrect={false}
           placeholder="Confirme a nova senha"
-          placeholderTextColor="#000"
+          placeholderTextColor="#333"
           underlineColorAndroid="transparent"
-          secureTextEntry={viewPassword}
+          secureTextEntry={confirmPassword}
           onChangeText={() => {}}
         />
-        {viewPassword ? (
+        {confirmPassword ? (
           <Icon
             name="eye"
             size={22}
             color="#333"
             style={styles.icon}
             onPress={() => {
-              setViewPassword(!viewPassword);
+              setConfirmPassword(!confirmPassword);
             }}
           />
         ) : (
@@ -115,7 +116,7 @@ const EditPassword = () => {
             color="#333"
             style={styles.icon}
             onPress={() => {
-              setViewPassword(!viewPassword);
+              setConfirmPassword(!confirmPassword);
             }}
           />
         )}

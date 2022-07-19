@@ -44,7 +44,12 @@ const Profile = props => {
             onPress={() => {
               props.navigation.push('EditPersonalData');
             }}>
-            <Icon style={styles.navIcon} name="file" size={15} color="#000" />
+            <Icon
+              style={styles.navIcon}
+              name="file"
+              size={15}
+              color="#560CCE"
+            />
             <Text style={styles.navText}> Dados pessoais</Text>
           </TouchableOpacity>
 
@@ -53,7 +58,12 @@ const Profile = props => {
             onPress={() => {
               props.navigation.push('EditPassword');
             }}>
-            <Icon style={styles.navIcon} name="lock" size={15} color="#000" />
+            <Icon
+              style={styles.navIcon}
+              name="lock"
+              size={15}
+              color="#560CCE"
+            />
             <Text style={styles.navText}> Trocar senha</Text>
           </TouchableOpacity>
 

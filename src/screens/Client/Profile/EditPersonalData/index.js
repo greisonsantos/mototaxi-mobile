@@ -28,7 +28,7 @@ const EditPersonalData = () => {
               autoCapitalize="none"
               autoCorrect={false}
               placeholder="Nome completo ..."
-              placeholderTextColor="#000"
+              placeholderTextColor="#333"
               underlineColorAndroid="transparent"
               onChangeText={() => {}}
             />
@@ -39,7 +39,7 @@ const EditPersonalData = () => {
             <TextInput
               style={styles.input}
               autoCapitalize="none"
-              placeholderTextColor="#000"
+              placeholderTextColor="#333"
               autoCorrect={false}
               textContentType="emailAddress"
               placeholder="e-mail"
@@ -55,7 +55,7 @@ const EditPersonalData = () => {
               autoCapitalize="none"
               autoCorrect={false}
               placeholder="CPF ..."
-              placeholderTextColor="#000"
+              placeholderTextColor="#333"
               underlineColorAndroid="transparent"
               onChangeText={() => {}}
             />
@@ -67,7 +67,7 @@ const EditPersonalData = () => {
               style={styles.input}
               autoCapitalize="none"
               autoCorrect={false}
-              placeholderTextColor="#000"
+              placeholderTextColor="#333"
               placeholder="(00) 0000-00000"
               underlineColorAndroid="transparent"
               onChangeText={() => {}}
@@ -79,7 +79,7 @@ const EditPersonalData = () => {
               style={styles.input}
               autoCapitalize="none"
               autoCorrect={false}
-              placeholderTextColor="#000"
+              placeholderTextColor="#333"
               placeholder="usuario para login"
               underlineColorAndroid="transparent"
               onChangeText={() => {}}

@@ -12,7 +12,7 @@ import {Picker} from '@react-native-community/picker';
 
 import styles from './styles';
 
-const CreateRace = ({navigation}) => {
+const CreateRace = props => {
   const [origin_address, setOriginAddress] = useState({value: '', error: ''});
   const [origin_reference, setOriginReference] = useState({
     value: '',
@@ -34,6 +34,7 @@ const CreateRace = ({navigation}) => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [vehicle_type, setVehicletype] = useState('');
 
   const onSignUpPressed = async () => {
     const originAddressError = addressValidator(origin_address.value);
@@ -70,9 +71,11 @@ const CreateRace = ({navigation}) => {
         number_destination: '',
         neighborhood_destination: '',
         destination_reference: destination_reference.value,
+
+        vehicle_type,
       });
 
-      navigation.reset({
+      props.navigation.reset({
         index: 0,
         routes: [{name: 'Home'}],
       });
@@ -92,6 +95,12 @@ const CreateRace = ({navigation}) => {
       );
     }
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line no-shadow
+    const vehicle_type = props.route.params.parmas.type;
+    setVehicletype(vehicle_type);
+  }, [props.route.params.parmas.type]);
 
   return (
     <Background>

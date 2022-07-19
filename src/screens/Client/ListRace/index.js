@@ -38,8 +38,8 @@ const ListRace = () => {
           <Text style={styles.text}>De: {item.street_origin}</Text>
           <Text style={styles.text}>Para: {item.street_destination}</Text>
           <Text style={styles.text}>
-             Tipo de Veiculo:{' '}
-            {item.type_vehicle === 'motorcycle' ? 'Moto' : 'Carro'}
+            Veiculo solicitado:{' '}
+            {item.vehicle_type === 'motocycle' ? 'Moto' : 'Carro'}
           </Text>
           <Text style={styles.text}> Motorista: {item.full_name}</Text>
           <Text style={styles.text}> Veiculo: {item.vehicle_description}</Text>
@@ -77,7 +77,7 @@ const ListRace = () => {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
               }}>
-              <View> 
+              <View>
                 <Text style={styles.text}>
                   {' '}
                   De: {current_race?.street_origin}
@@ -88,7 +88,7 @@ const ListRace = () => {
                 </Text>
                 <Text style={styles.text}>
                   Tipo de Veiculo:{' '}
-                  {current_race?.type_vehicle === 'motorcycle'
+                  {current_race?.vehicle_type === 'motocycle'
                     ? 'Moto'
                     : 'Carro'}
                 </Text>

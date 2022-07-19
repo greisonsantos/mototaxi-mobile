@@ -88,7 +88,7 @@ export default function RegisterScreen({navigation}) {
       });
       setIsLoading(false);
       Toast.showWithGravity(
-        'Atenção, Usuário cadastrado com suceso, faça login para continuar',
+        'Atenção, Usuário cadastrado com sucesso, faça login para continuar',
         Toast.LONG,
         Toast.TOP,
       );

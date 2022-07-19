@@ -1,8 +1,7 @@
 import React, {useContext} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Background from '../../../components/Background';
-import {Icon} from 'react-native-elements';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Button from '../../../components/Button';
 import AuthContex from '../../../contexs/auth';
 import styles from './styles';
@@ -54,7 +53,12 @@ export default function Home({navigation}) {
               style={{width: 115, height: 120, top: 10, resizeMode: 'contain'}}
             />
             <Text style={styles.text}> Solicitar Moto</Text>
-            <Icon raised name="heartbeat" type="font-awesome" color="#f50" />
+            <Icon
+              style={styles.icon}
+              name="arrow-right"
+              size={30}
+              color="#FFF"
+            />
           </View>
         </TouchableOpacity>
 
@@ -75,7 +79,12 @@ export default function Home({navigation}) {
               style={{width: 130, height: 120, resizeMode: 'contain'}}
             />
             <Text style={styles.text}> Solicitar Carro</Text>
-            <Icon raised name="heartbeat" type="font-awesome" color="#f50" />
+            <Icon
+              style={styles.icon}
+              name="arrow-right"
+              size={30}
+              color="#FFF"
+            />
           </View>
         </TouchableOpacity>
       </View>
@@ -88,9 +97,6 @@ export default function Home({navigation}) {
         Perfil
       </Button>
 
-      <Button mode="outlined" onPress={handlesignOut}>
-        Sair
-      </Button>
     </Background>
   );
 }

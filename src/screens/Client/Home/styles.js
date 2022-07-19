@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 50,
     justifyContent: 'flex-end',
+    marginLeft: 5,
   },
 });
 

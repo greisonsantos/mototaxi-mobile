@@ -49,11 +49,11 @@ export default function Home({navigation}) {
           style={styles.card}>
           <View style={styles.viewIcon}>
             <Image
-              source={{uri: 'https://links.papareact.com/3pn'}}
+              source={require('../../../assets/moto.png')}
               // eslint-disable-next-line react-native/no-inline-styles
-              style={{width: 120, height: 120, resizeMode: 'contain'}}
+              style={{width: 115, height: 120, top: 10, resizeMode: 'contain'}}
             />
-            <Text style={styles.text}>Solicitar Moto</Text>
+            <Text style={styles.text}> Solicitar Moto</Text>
             <Icon raised name="heartbeat" type="font-awesome" color="#f50" />
           </View>
         </TouchableOpacity>
@@ -70,11 +70,11 @@ export default function Home({navigation}) {
           style={styles.card}>
           <View style={styles.viewIcon}>
             <Image
-              source={{uri: 'https://links.papareact.com/3pn'}}
+              source={require('../../../assets/image-car.png')}
               // eslint-disable-next-line react-native/no-inline-styles
-              style={{width: 120, height: 120, resizeMode: 'contain'}}
+              style={{width: 130, height: 120, resizeMode: 'contain'}}
             />
-            <Text style={styles.text}>Solicitar Carro</Text>
+            <Text style={styles.text}> Solicitar Carro</Text>
             <Icon raised name="heartbeat" type="font-awesome" color="#f50" />
           </View>
         </TouchableOpacity>

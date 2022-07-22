@@ -12,12 +12,12 @@ import {usernameValidator, passwordValidator} from '../../helpers/validator';
 import AuthContex from '../../contexs/auth';
 
 export default function LoginScreen({navigation}) {
-
-  
   const [username, setusername] = useState({value: '', error: ''});
   const [password, setPassword] = useState({value: '', error: ''});
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const {signIn} = useContext(AuthContex);
+
+  const {signIn, error_login, setErrorLogin} = useContext(AuthContex);
 
   const onLoginPressed = () => {
     const usernameError = usernameValidator(username.value);
@@ -30,18 +30,35 @@ export default function LoginScreen({navigation}) {
     }
 
     setIsLoading(true);
-    signIn(username.value, password.value);
-    setIsLoading(false);
+    try {
+      signIn(username.value.trim(), password.value);
+      setIsLoading(false);
+      setError(false);
+      setErrorLogin(null);
+      // eslint-disable-next-line no-catch-shadow
+    } catch (error) {
+      setIsLoading(false);
+      setError(true);
+    }
   };
 
   useEffect(() => {
     setIsLoading(false);
-  }, []);
+    console.log(error_login)
+    if (error_login) {
+      setError(true);
+    }
+  }, [error_login]);
 
   return (
     <Background>
       <Logo />
       <Header>Bem vindo de volta!</Header>
+
+      {error && (
+        // eslint-disable-next-line react-native/no-inline-styles
+        <Text style={{color: '#FF0000'}}> usuario ou senha incorreto</Text>
+      )}
       <TextInput
         label="usuario"
         returnKeyType="next"

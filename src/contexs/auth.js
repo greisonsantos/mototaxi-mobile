@@ -14,16 +14,17 @@ const AuthContex = createContext({
   signIn: Function,
   signOut: Function,
   Loading: Boolean,
-  error_login: Object,
+  error_login: String,
+  setErrorLogin: Function,
   user_name: String,
-  setUser: Function
+  setUser: Function,
 });
 
 // atribui valor do contexto dentro do componente de contexto
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error_login, setErrorLogin] = useState({});
+  const [error_login, setErrorLogin] = useState('');
   const [user_name, setUserName] = useState({});
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export const AuthProvider = ({children}) => {
         setUser(JSON.parse(userAuth));
       }
       setLoading(false);
-      setErrorLogin({});
+      setErrorLogin(null);
     }
 
     loadDateStorage();
@@ -58,18 +59,19 @@ export const AuthProvider = ({children}) => {
         const user = jwtDecode(token);
         setUser(user.data);
         setUserName('');
-        setErrorLogin('');
+        setErrorLogin(null);
         api.defaults.headers.authorization = ` ${token}`;
         await AsyncStorage.setItem('@entrega:user', JSON.stringify(user.data));
         await AsyncStorage.setItem('@entrega:token', token);
       } else {
         // console.log(response.data)
         setUserName(username);
-        setErrorLogin(response.data);
+        setErrorLogin('error');
       }
 
       setLoading(false);
     } catch (err) {
+      setErrorLogin('error');
       console.log(err);
       setLoading(false);
     }
@@ -82,7 +84,7 @@ export const AuthProvider = ({children}) => {
     });
 
     await api.delete(`/devices/${token}`);
-    setErrorLogin({});
+    setErrorLogin(null);
   }
 
   //if (loading) {
@@ -104,6 +106,7 @@ export const AuthProvider = ({children}) => {
         setUser,
         signOut,
         error_login,
+        setErrorLogin,
         user_name,
       }}>
       {children}

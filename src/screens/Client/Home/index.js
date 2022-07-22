@@ -96,7 +96,6 @@ export default function Home({navigation}) {
       <Button mode="outlined" onPress={() => navigation.navigate('Profile')}>
         Perfil
       </Button>
-
     </Background>
   );
 }

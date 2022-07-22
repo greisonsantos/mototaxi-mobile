@@ -40,7 +40,7 @@ export default function EditPassword({navigation}) {
 
     setIsLoading(true);
     try {
-         await api.put(`/clients/${userId}`, {
+      await api.put(`/clients/${userId}`, {
         password: password.value,
       });
 

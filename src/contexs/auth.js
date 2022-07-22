@@ -16,6 +16,7 @@ const AuthContex = createContext({
   Loading: Boolean,
   error_login: Object,
   user_name: String,
+  setUser: Function
 });
 
 // atribui valor do contexto dentro do componente de contexto
@@ -96,7 +97,15 @@ export const AuthProvider = ({children}) => {
   return (
     // se existir user return true signed
     <AuthContex.Provider
-      value={{signed: !!user, user, signIn, signOut, error_login, user_name}}>
+      value={{
+        signed: !!user,
+        user,
+        signIn,
+        setUser,
+        signOut,
+        error_login,
+        user_name,
+      }}>
       {children}
     </AuthContex.Provider>
   );

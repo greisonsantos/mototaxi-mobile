@@ -1,131 +1,130 @@
-import React, {useState} from 'react';
-import {
-  View,
-  TextInput,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Text,
-  Platform,
-} from 'react-native';
+import React, {useEffect, useState, useContext} from 'react';
+import {StyleSheet, ScrollView, Keyboard} from 'react-native';
 import Background from '../../../../components/Background';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Header from '../../../../components/Header';
+import Button from '../../../../components/Button';
+import TextInput from '../../../../components/TextInput';
+import {theme} from '../../../../core/theme';
+import {
+  passwordValidator,
+  confimPasswordValidator,
+} from '../../../../helpers/validator';
+import api from '../../../../services/api';
+import Toast from 'react-native-simple-toast';
+import AuthContex from '../../../../contexs/auth';
 
-import styles from './styles';
-const EditPassword = () => {
-  const [viewCurrentyPassword, setViewCurrentyPassword] = useState(true);
-  const [newPassword, setNewPassword] = useState(true);
-  const [confirmPassword, setConfirmPassword] = useState(true);
+export default function EditPassword({navigation}) {
+  const {user} = useContext(AuthContex);
+
+  const [userId, setUserId] = useState(null);
+  const [password, setPassword] = useState({value: '', error: ''});
+  const [confirmPassword, setConfirmPassword] = useState({
+    value: '',
+    error: '',
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSignUpPressed = async () => {
+    const passwordError = passwordValidator(password.value);
+    const confirmPasswordError = confimPasswordValidator(
+      password.value,
+      confirmPassword.value,
+    );
+
+    Keyboard.dismiss();
+    if (passwordError || confirmPasswordError) {
+      setPassword({...password, error: passwordError});
+      setConfirmPassword({...confirmPassword, error: confirmPasswordError});
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+         await api.put(`/clients/${userId}`, {
+        password: password.value,
+      });
+
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Profile'}],
+      });
+      setIsLoading(false);
+      Toast.showWithGravity(
+        'Atenção, Senha alterada com sucesso!',
+        Toast.LONG,
+        Toast.TOP,
+      );
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+      Toast.showWithGravity(
+        'Atenção, Erro ao tentar alterar senha',
+        Toast.LONG,
+        Toast.TOP,
+      );
+    }
+  };
+
+  useEffect(() => {
+    setUserId(user.id);
+  }, [user]);
+
   return (
-    <Background style={styles.container}>
-      <View style={styles.inputContainer}>
-        <Icon name="lock" size={20} color="#333" style={styles.icon} />
+    <Background>
+      <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
+        <Header>Editar Senha</Header>
         <TextInput
-          style={styles.input}
-          autoCapitalize="none"
-          autoCorrect={false}
-          placeholderTextColor="#333"
-          placeholder="Senha atual"
-          underlineColorAndroid="transparent"
-          secureTextEntry={viewCurrentyPassword}
-          onChangeText={() => {}}
+          label="Senha"
+          returnKeyType="done"
+          value={password.value}
+          onChangeText={text => setPassword({value: text, error: ''})}
+          error={!!password.error}
+          errorText={password.error}
+          secureTextEntry
         />
 
-        {viewCurrentyPassword ? (
-          <Icon
-            name="eye"
-            size={22}
-            color="#333"
-            style={styles.icon}
-            onPress={() => {
-              setViewCurrentyPassword(!viewCurrentyPassword);
-            }}
-          />
-        ) : (
-          <Icon
-            name="eye-slash"
-            size={22}
-            color="#333"
-            style={styles.icon}
-            onPress={() => {
-              setViewCurrentyPassword(!viewCurrentyPassword);
-            }}
-          />
-        )}
-      </View>
-      <View style={styles.inputContainer}>
-        <Icon name="lock" size={25} color="#333" style={styles.icon} />
         <TextInput
-          style={styles.input}
-          autoCapitalize="none"
-          autoCorrect={false}
-          placeholder="Nova senha"
-          placeholderTextColor="#333"
-          underlineColorAndroid="transparent"
-          secureTextEntry={newPassword}
-          onChangeText={() => {}}
+          label="Confirmação de senha"
+          returnKeyType="done"
+          value={confirmPassword.value}
+          onChangeText={text => setConfirmPassword({value: text, error: ''})}
+          error={!!confirmPassword.error}
+          errorText={confirmPassword.error}
+          secureTextEntry
         />
-
-        {newPassword ? (
-          <Icon
-            name="eye"
-            size={22}
-            color="#333"
-            style={styles.icon}
-            onPress={() => {
-              setNewPassword(!newPassword);
-            }}
-          />
+        {isLoading ? (
+          <Button
+            mode="contained"
+            onPress={onSignUpPressed}
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{marginTop: 24}}>
+            carregando...
+          </Button>
         ) : (
-          <Icon
-            name="eye-slash"
-            size={22}
-            color="#333"
-            style={styles.icon}
-            onPress={() => {
-              setNewPassword(!newPassword);
-            }}
-          />
+          <Button
+            mode="contained"
+            onPress={onSignUpPressed}
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{marginTop: 24}}>
+            Editar Senha
+          </Button>
         )}
-      </View>
-      <View style={styles.inputContainer}>
-        <Icon name="lock" size={25} color="#333" style={styles.icon} />
-        <TextInput
-          style={styles.input}
-          autoCapitalize="none"
-          autoCorrect={false}
-          placeholder="Confirme a nova senha"
-          placeholderTextColor="#333"
-          underlineColorAndroid="transparent"
-          secureTextEntry={confirmPassword}
-          onChangeText={() => {}}
-        />
-        {confirmPassword ? (
-          <Icon
-            name="eye"
-            size={22}
-            color="#333"
-            style={styles.icon}
-            onPress={() => {
-              setConfirmPassword(!confirmPassword);
-            }}
-          />
-        ) : (
-          <Icon
-            name="eye-slash"
-            size={22}
-            color="#333"
-            style={styles.icon}
-            onPress={() => {
-              setConfirmPassword(!confirmPassword);
-            }}
-          />
-        )}
-      </View>
-      <TouchableOpacity style={styles.button} onPress={() => {}}>
-        <Text style={styles.textButton}>Salvar Senha</Text>
-      </TouchableOpacity>
+      </ScrollView>
     </Background>
   );
-};
+}
 
-export default EditPassword;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+  },
+  row: {
+    flexDirection: 'row',
+    marginTop: 4,
+  },
+  link: {
+    fontWeight: 'bold',
+    color: theme.colors.primary,
+  },
+});

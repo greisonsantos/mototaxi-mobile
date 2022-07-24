@@ -1,21 +1,19 @@
 import {StyleSheet} from 'react-native';
-import theme from '../../../core/theme';
+import {theme} from '../../../../core/theme';
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding:10
+    backgroundColor: theme.colors.white,
+    padding: 10,
   },
-
-  form:{
-    width:'100%',
-    marginTop:20,
-    marginTop:50
+  form: {
+    width: '100%',
+    marginTop: 50,
   },
-
-  input:{
+  input: {
+    backgroundColor: theme.colors.dark,
     justifyContent: 'center',
     height: 60,
     opacity: 0.6,
@@ -23,19 +21,20 @@ const styles = StyleSheet.create({
     borderColor: '#8B8D8F',
     borderWidth: 1,
     bottom: 10,
-    marginTop:10,
-    paddingLeft:10
+    marginTop: 10,
+    paddingLeft: 10,
   },
 
   button: {
+    backgroundColor: theme.colors.primary,
     borderRadius: 8,
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  buttonText:{
-  }
-
-})
+  buttonText: {
+    color: theme.colors.primary,
+  },
+});
 
 export default styles;

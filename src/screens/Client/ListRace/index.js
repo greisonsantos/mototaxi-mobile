@@ -149,7 +149,7 @@ const ListRace = () => {
           showsVerticalScrollIndicator={false}
           data={races}
           renderItem={renderItem}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={item => item.race_id.toString()}
         />
       </View>
     </View>

@@ -2,7 +2,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 
-import Home from '../screens/Admin';
+import Home from '../screens/Admin/Home';
 const Stack = createStackNavigator();
 
 export default function Routes() {
@@ -13,7 +13,7 @@ export default function Routes() {
           headerTransparent: true,
           title: '',
         }}>
-        <Stack.Screen name="HomeAdmin" component={Home} />
+        <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );

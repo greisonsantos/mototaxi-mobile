@@ -49,7 +49,7 @@ const CreateRace = props => {
       });
       return;
     }
-    if (payment_type.value === '-1') {
+    if (payment_type.value === '') {
       return Alert.alert(
         'Atenção',
         'Selecione a forma de pagamento para continuar',
@@ -152,7 +152,7 @@ const CreateRace = props => {
           selectedValue={payment_type.value}
           style={styles.inputSelect}
           onValueChange={value => setPaymentType({value: value, error: ''})}>
-          <Picker.Item label="Forma de pagamento ..." value={'-1'} />
+          <Picker.Item label="Forma de pagamento ..." value={'0'} />
           <Picker.Item key={1} label="Dinheiro" value="cash" />
           <Picker.Item key={2} label="Pix" value="pix" />
           <Picker.Item key={3} label="Cartão Crédito" value="card_credit" />

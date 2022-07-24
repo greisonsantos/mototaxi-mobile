@@ -6,7 +6,6 @@ import Home from '../screens/Driver/Home';
 import AvaliableRaces from '../screens/Driver/AvaliableRaces';
 import Profile from '../screens/Driver/Profile';
 import EditPassword from '../screens/Driver/Profile/EditPassword';
-import EditPersonalData from '../screens/Driver/Profile/EditPersonalData';
 import ListRace from '../screens/Driver/ListRace';
 
 const Stack = createStackNavigator();
@@ -23,7 +22,6 @@ export default function Routes() {
         <Stack.Screen name="AvaliableRaces" component={AvaliableRaces} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="EditPassword" component={EditPassword} />
-        <Stack.Screen name="EditPersonalData" component={EditPersonalData} />
         <Stack.Screen name="ListRace" component={ListRace} />
       </Stack.Navigator>
     </NavigationContainer>

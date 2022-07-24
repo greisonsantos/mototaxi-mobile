@@ -7,14 +7,15 @@ import api from '../../../services/api';
 import dateFormat from 'dateformat';
 
 import styles from './styles';
-
-const ListRace = () => {
+import Button from '../../../components/Button';
+import Toast from 'react-native-simple-toast';
+const ListRace = ({navigation}) => {
   const [races, setRaces] = useState([]);
 
   const [current_race, setCurrentRace] = useState(null);
 
   const getRaces = async () => {
-    const response = await api.get('/races');
+    const response = await api.get('/users-show-races');
     const {data} = response;
 
     setCurrentRace(data.current_race);
@@ -25,25 +26,52 @@ const ListRace = () => {
     getRaces();
   }, []);
 
+  const handleFinalRace = async () => {
+    try {
+      await api.put(`/races/${current_race.id}`, {
+        status: 3,
+      });
+
+      Toast.showWithGravity(
+        'Atenção, Sucesso Corrida finalizada',
+        Toast.LONG,
+        Toast.TOP,
+      );
+      getRaces();
+    } catch (error) {
+      console.log(error);
+      Toast.showWithGravity(
+        'Atenção, Erro ao finalizar Corrida! Verifique sua conexão',
+        Toast.LONG,
+        Toast.TOP,
+      );
+    }
+  };
+
   const renderItem = ({item}) => (
     <View style={styles.cardContainer}>
       <View>
         <View>
           <Text style={styles.date}>
-            DATA: {dateFormat(item.date, 'dd/mm/yyyy')}
+            DATA: {dateFormat(item.created_at, 'dd/mm/yyyy  HH:MM:ss')}
           </Text>
         </View>
 
         <View>
-          <Text style={styles.text}>De: {item.street_origin}</Text>
-          <Text style={styles.text}>Para: {item.street_destination}</Text>
+          <Text style={styles.text} numberOfLines={2}>
+            De: {item.street_origin}
+          </Text>
+          <Text style={styles.text} numberOfLines={2}>
+            Para: {item.street_destination}
+          </Text>
+
+          <Text></Text>
           <Text style={styles.text}>
             Veiculo solicitado:{' '}
-            {item.vehicle_type === 'motocycle' ? 'Moto' : 'Carro'}
+            {item.vehicle_type === 'motorcycle' ? 'Moto' : 'Carro'}
           </Text>
-          <Text style={styles.text}> Motorista: {item.full_name}</Text>
-          <Text style={styles.text}> Veiculo: {item.vehicle_description}</Text>
-          <Text style={styles.text}> Placa: {item.plate}</Text>
+
+          <Text></Text>
 
           <Text style={styles.text}>
             {' '}
@@ -68,77 +96,56 @@ const ListRace = () => {
           <View style={styles.cardContainer}>
             <View>
               <Text style={styles.date}>
-                DATA: {dateFormat(current_race?.date, 'dd/mm/yyyy')}{' '}
+                DATA :{' '}
+                {dateFormat(current_race.created_at, 'dd/mm/yyyy  HH:MM:ss')}
               </Text>
             </View>
-            <View
-              // eslint-disable-next-line react-native/no-inline-styles
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
+            <View>
               <View>
                 <Text style={styles.text}>
                   {' '}
-                  De: {current_race?.street_origin}
+                  DE: {current_race?.street_origin}
                 </Text>
+
+                <Text> </Text>
+
                 <Text style={styles.text}>
                   {' '}
-                  Para: {current_race?.street_destination}
+                  PARA: {current_race?.street_destination}
                 </Text>
+                <Text> </Text>
                 <Text style={styles.text}>
                   Tipo de Veiculo:{' '}
-                  {current_race?.vehicle_type === 'motocycle'
+                  {current_race?.vehicle_type === 'motorcycle'
                     ? 'Moto'
                     : 'Carro'}
                 </Text>
-
-                {current_race.status === '2' && (
-                  <>
-                    <Text style={styles.text}>
-                      Motorista: {current_race.full_name}
-                    </Text>
-                    <Text style={styles.text}>
-                      Veiculo: {current_race.vehicle_description}
-                    </Text>
-                    <Text style={styles.text}>Placa: {current_race.plate}</Text>
-                  </>
-                )}
+                <Text> </Text>
               </View>
-              <View>
-                {current_race.status === '1' ? (
-                  <>
-                    <Pulse
-                      color="#560CCE"
-                      numPulses={2}
-                      diameter={80}
-                      speed={10}
-                      duration={60000}
-                    />
-                    <Text style={{color: '#560CCE'}}>
-                      {' '}
-                      procurando motorista
-                    </Text>
-                  </>
-                ) : (
-                  <>
-                    <Pulse
-                      color="#560CCE"
-                      numPulses={2}
-                      diameter={80}
-                      speed={10}
-                      duration={60000}
-                    />
-                    <Text style={{color: '#560CCE'}}> Motorista a caminho</Text>
-                  </>
-                )}
+              <View style={{justifyContent: 'center'}}>
+                <>
+                  <Pulse
+                    color="#560CCE"
+                    numPulses={2}
+                    diameter={80}
+                    speed={10}
+                    duration={60000}
+                  />
+                  <Text style={{color: '#560CCE', textAlign: 'center'}}>
+                    {' '}
+                    DIGIRA-SE ATÉ O LOCAL PARA PEGAR O PASSAGEIRO
+                  </Text>
+                </>
               </View>
+              <Button mode="contained" onPress={handleFinalRace}>
+                Finalizar
+              </Button>
             </View>
           </View>
         )}
       </View>
 
-      <Header> CORRIDAS FINALIZADAS</Header>
+      <Header> CORRIDAS FINALIZADAS {races.length}</Header>
 
       <View style={styles.container}>
         <FlatList

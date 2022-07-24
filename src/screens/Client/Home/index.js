@@ -41,7 +41,7 @@ export default function Home({navigation}) {
           onPress={() => {
             navigation.navigate('CreateRace', {
               parmas: {
-                type: 'motocycle',
+                type: 'motorcycle',
               },
             });
           }}
@@ -96,7 +96,6 @@ export default function Home({navigation}) {
       <Button mode="outlined" onPress={() => navigation.navigate('Profile')}>
         Perfil
       </Button>
-
     </Background>
   );
 }

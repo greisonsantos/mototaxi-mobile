@@ -14,9 +14,10 @@ const ListRace = () => {
   const [current_race, setCurrentRace] = useState(null);
 
   const getRaces = async () => {
-    const response = await api.get('/races');
+    const response = await api.get('/clients-show-races');
     const {data} = response;
 
+    console.log(data);
     setCurrentRace(data.current_race);
     setRaces(data.finaly_races);
   };
@@ -39,12 +40,14 @@ const ListRace = () => {
           <Text style={styles.text}>Para: {item.street_destination}</Text>
           <Text style={styles.text}>
             Veiculo solicitado:{' '}
-            {item.vehicle_type === 'motocycle' ? 'Moto' : 'Carro'}
+            {item.vehicle_type === 'motorcycle' ? 'Moto' : 'Carro'}
           </Text>
+          <Text> </Text>
           <Text style={styles.text}> Motorista: {item.full_name}</Text>
           <Text style={styles.text}> Veiculo: {item.vehicle_description}</Text>
           <Text style={styles.text}> Placa: {item.plate}</Text>
 
+          <Text> </Text>
           <Text style={styles.text}>
             {' '}
             Forma de pagamento:
@@ -68,15 +71,11 @@ const ListRace = () => {
           <View style={styles.cardContainer}>
             <View>
               <Text style={styles.date}>
-                DATA: {dateFormat(current_race?.date, 'dd/mm/yyyy')}{' '}
+                DATA:{' '}
+                {dateFormat(current_race.created_at, 'dd/mm/yyyy  HH:MM:ss')}
               </Text>
             </View>
-            <View
-              // eslint-disable-next-line react-native/no-inline-styles
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
+            <View>
               <View>
                 <Text style={styles.text}>
                   {' '}
@@ -86,13 +85,14 @@ const ListRace = () => {
                   {' '}
                   Para: {current_race?.street_destination}
                 </Text>
+                <Text> </Text>
                 <Text style={styles.text}>
                   Tipo de Veiculo:{' '}
-                  {current_race?.vehicle_type === 'motocycle'
+                  {current_race?.vehicle_type === 'motorcycle'
                     ? 'Moto'
                     : 'Carro'}
                 </Text>
-
+                <Text> </Text>
                 {current_race.status === '2' && (
                   <>
                     <Text style={styles.text}>
@@ -115,13 +115,14 @@ const ListRace = () => {
                       speed={10}
                       duration={60000}
                     />
-                    <Text style={{color: '#560CCE'}}>
+                    <Text style={{color: '#560CCE', textAlign: 'center'}}>
                       {' '}
-                      procurando motorista
+                      PROCURANDO MOTORISTA
                     </Text>
                   </>
                 ) : (
                   <>
+                    <Text> </Text>
                     <Pulse
                       color="#560CCE"
                       numPulses={2}
@@ -129,7 +130,10 @@ const ListRace = () => {
                       speed={10}
                       duration={60000}
                     />
-                    <Text style={{color: '#560CCE'}}> Motorista a caminho</Text>
+                    <Text style={{color: '#560CCE', textAlign: 'center'}}>
+                      {' '}
+                      MOTORISTA A CAMINHO AGUARDE NO LOCAL
+                    </Text>
                   </>
                 )}
               </View>
@@ -138,14 +142,14 @@ const ListRace = () => {
         )}
       </View>
 
-      <Header> CORRIDAS FINALIZADAS</Header>
+      <Header> CORRIDAS FINALIZADAS {races.length}</Header>
 
       <View style={styles.container}>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={races}
           renderItem={renderItem}
-          keyExtractor={item => item.race_id.toString()}
+          keyExtractor={item => item.id.toString()}
         />
       </View>
     </View>

@@ -26,10 +26,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   inputSelect: {
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.secondary,
     color: '#000',
-    height: 60,
-    borderWidth: 1,
     borderRadius: 8,
     bottom: 10,
     marginTop: 10,

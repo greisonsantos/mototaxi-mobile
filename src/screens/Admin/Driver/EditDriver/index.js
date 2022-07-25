@@ -126,14 +126,15 @@ const EditDriver = ({navigation, route}) => {
             {' '}
             Tipo do Veiculo *
           </Text>
-          <Picker
-            selectedValue={type_vehicle}
-            style={styles.inputSelect}
-            onValueChange={value => setTypevehicle(value)}>
-            <Picker.Item label="Clique para selecionar..." value={'0'} />
-            <Picker.Item key={1} label="Moto" value="motorcycle" />
-            <Picker.Item key={2} label="Carro" value="car" />
-          </Picker>
+          <View style={styles.inputSelect}>
+            <Picker
+              selectedValue={type_vehicle}
+              onValueChange={value => setTypevehicle(value)}>
+              <Picker.Item label="Clique para selecionar..." value={'0'} />
+              <Picker.Item key={1} label="Moto" value="motorcycle" />
+              <Picker.Item key={2} label="Carro" value="car" />
+            </Picker>
+          </View>
 
           <Text style={{color: '#000', fontWeight: 'bold'}}>
             {' '}

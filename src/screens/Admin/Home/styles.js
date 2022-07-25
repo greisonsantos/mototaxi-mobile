@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   },
   textButton: {
     fontSize: 22,
+    color: '#fff',
   },
   logo: {
     width: 250,

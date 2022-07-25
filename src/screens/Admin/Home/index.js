@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -26,7 +26,7 @@ const Home = props => {
           onPress={() => props.navigation.navigate('HomeDriver')}
           style={styles.button}
           activeOpacity={0.5}>
-          <Icon name="list" size={30} color="grey" />
+          <Icon name="list" size={30} color="#fff" />
           <Text style={styles.textButton}>MOTORISTAS</Text>
         </TouchableOpacity>
 
@@ -34,15 +34,20 @@ const Home = props => {
           onPress={() => props.navigation.navigate('HomeClient')}
           style={styles.button}
           activeOpacity={0.5}>
-          <Icon name="person" size={30} color="grey" />
+          <Icon
+            style={{marginLeft: -20}}
+            name="person"
+            size={30}
+            color="#fff"
+          />
           <Text style={styles.textButton}>CLIENTES</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button}
           activeOpacity={0.5}
-          onPress={() => props.navigation.navigate('Reports')}>
-          <Icon name="list" size={30} color="grey" />
+          onPress={() => Alert.alert('Atenção', 'Ainda não disponivel')}>
+          <Icon style={{marginLeft: -10}} name="list" size={30} color="#fff" />
           <Text style={styles.textButton}>RELATÓRIOS</Text>
         </TouchableOpacity>
       </View>
@@ -51,7 +56,7 @@ const Home = props => {
           style={styles.buttonLogout}
           activeOpacity={0.5}
           onPress={handlesignOut}>
-          <FontAwesome name="long-arrow-left" size={30} color="#fff" />
+          <FontAwesome name="long-arrow-right" size={30} color="#fff" />
           <View style={styles.containerTextButtonLogout}>
             <Text style={styles.textButtonLogout}>Sair</Text>
           </View>

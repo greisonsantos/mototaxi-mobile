@@ -12,9 +12,13 @@ const styles = StyleSheet.create({
     height: 200,
   },
   search: {
-    marginTop: 40,
+    marginTop: 30,
     marginBottom: 50,
-    width: '100%',
+    backgroundColor: theme.colors.darker,
+    justifyContent: 'center',
+    opacity: 0.7,
+    bottom: 10,
+    margin: 10,
   },
   form: {
     flexDirection: 'row',
@@ -27,7 +31,7 @@ const styles = StyleSheet.create({
   button: {
     padding: 15,
     marginRight: 15,
-    backgroundColor: theme.colors.darker,
+    backgroundColor: theme.colors.primary,
     borderRadius: 50,
     marginTop: -20,
   },

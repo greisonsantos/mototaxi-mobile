@@ -5,14 +5,16 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 
 import AwesomeAlert from 'react-native-awesome-alerts';
 import api from '../../../../services/api';
+import {Picker} from '@react-native-community/picker';
 
 import styles from './styles';
 
-const EditUser = ({navigation, route}) => {
+const EditDriver = ({navigation, route}) => {
   useEffect(() => {
     const id = route.params?.id;
     setUserId(id);
@@ -28,11 +30,18 @@ const EditUser = ({navigation, route}) => {
     setPlate(data.plate);
     setUsername(data.username);
     setPhone(data.phone);
-  }
+    setColor(data.color);
+    setvehicleDescription(data.vehicle_description);
+    setTypevehicle(data.type_vehicle);
+  };
+
   const [full_name, setFullName] = useState('');
   const [plate, setPlate] = useState('');
   const [username, setUsername] = useState('');
   const [phone, setPhone] = useState('');
+  const [color, setColor] = useState('');
+  const [vehicle_description, setvehicleDescription] = useState('');
+  const [type_vehicle, setTypevehicle] = useState('');
 
   const [password, setPassword] = useState('');
   const [confirm_password, setConfirmPassword] = useState('');
@@ -63,6 +72,9 @@ const EditUser = ({navigation, route}) => {
         plate,
         username,
         password,
+        color,
+        vehicle_description,
+        type_vehicle,
         phone,
       });
 
@@ -71,37 +83,103 @@ const EditUser = ({navigation, route}) => {
       }
       setloading(false);
     } catch (err) {
-      console.log(err);
+      Alert.alert(
+        'Atenção',
+        'Erro ao cadastrar motorista verifique se os dados de placa, usuario de login não existem na base! se sim altere para continuar.',
+      );
       setloading(false);
     }
   };
 
   return (
     <View style={styles.container}>
+      <Text
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{
+          color: '#000',
+          textAlign: 'center',
+          marginTop: 5,
+          fontSize: 20,
+          marginLeft: 10
+        }}>
+        {' '}
+        EDITAR DADOS DE MOTORISTA{' '}
+      </Text>
+
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.form}>
-          <Text> Nome do motoboy *</Text>
+          <Text style={{color: '#000', fontWeight: 'bold'}}>
+            {' '}
+            Nome do motorista *
+          </Text>
           <TextInput
             style={styles.input}
             autoCapitalize="none"
             autoCorrect={false}
             placeholder="Nome  do motoboy"
+            placeholderTextColor="#333"
             underlineColorAndroid="transparent"
             value={full_name}
             onChangeText={text => setFullName(text)}
           />
+          <Text style={{color: '#000', fontWeight: 'bold'}}>
+            {' '}
+            Tipo do Veiculo *
+          </Text>
+          <Picker
+            selectedValue={type_vehicle}
+            style={styles.inputSelect}
+            onValueChange={value => setTypevehicle(value)}>
+            <Picker.Item label="Clique para selecionar..." value={'0'} />
+            <Picker.Item key={1} label="Moto" value="motorcycle" />
+            <Picker.Item key={2} label="Carro" value="car" />
+          </Picker>
 
-          <Text> Placa da Moto *</Text>
+          <Text style={{color: '#000', fontWeight: 'bold'}}>
+            {' '}
+            Placa da Veiculo *
+          </Text>
           <TextInput
             style={styles.input}
             autoCapitalize="none"
             autoCorrect={false}
-            placeholder="placa da moto"
+            placeholder="Placa da veiculo"
+            placeholderTextColor="#333"
             underlineColorAndroid="transparent"
             value={plate}
             onChangeText={text => setPlate(text)}
           />
-          <Text> Telefone *</Text>
+
+          <Text style={{color: '#000', fontWeight: 'bold'}}>
+            {' '}
+            Cor do veiculo *
+          </Text>
+          <TextInput
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            placeholder="Cor do veiculo"
+            placeholderTextColor="#333"
+            underlineColorAndroid="transparent"
+            value={color}
+            onChangeText={text => setColor(text)}
+          />
+
+          <Text style={{color: '#000', fontWeight: 'bold'}}>
+            {' '}
+            Descrição do veiculo *
+          </Text>
+          <TextInput
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            placeholder="Ex: Titan 150 | Fiat palio"
+            placeholderTextColor="#333"
+            underlineColorAndroid="transparent"
+            value={vehicle_description}
+            onChangeText={text => setvehicleDescription(text)}
+          />
+          <Text style={{color: '#000', fontWeight: 'bold'}}>Telefone *</Text>
           <TextInput
             style={styles.input}
             autoCapitalize="none"
@@ -111,7 +189,10 @@ const EditUser = ({navigation, route}) => {
             value={phone}
             onChangeText={text => setPhone(text)}
           />
-          <Text> Usuário para login *</Text>
+          <Text style={{color: '#000', fontWeight: 'bold'}}>
+            {' '}
+            Usuário para login *
+          </Text>
           <TextInput
             style={styles.input}
             autoCapitalize="none"
@@ -122,7 +203,7 @@ const EditUser = ({navigation, route}) => {
             onChangeText={text => setUsername(text)}
           />
 
-          <Text> Senha *</Text>
+          <Text style={{color: '#000', fontWeight: 'bold'}}> Senha *</Text>
           <TextInput
             style={styles.input}
             autoCapitalize="none"
@@ -134,7 +215,10 @@ const EditUser = ({navigation, route}) => {
             onChangeText={text => setPassword(text)}
           />
 
-          <Text> Confirmação de senha *</Text>
+          <Text style={{color: '#000', fontWeight: 'bold'}}>
+            {' '}
+            Confirmação de senha *
+          </Text>
           <TextInput
             style={styles.input}
             autoCapitalize="none"
@@ -150,7 +234,7 @@ const EditUser = ({navigation, route}) => {
             style={styles.button}
             activeOpacity={0.5}
             onPress={handleSubmit}>
-            <Text style={styles.buttonText}>EDITAR</Text>
+            <Text style={styles.buttonText}>EDITAR MOTORISTA</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -176,7 +260,7 @@ const EditUser = ({navigation, route}) => {
         cancelText="ok"
         onCancelPressed={() => {
           setSuccess(false);
-          navigation.navigate('HomeAdmin');
+          navigation.navigate('Home');
         }}
         showConfirmButton={false}
         confirmButtonColor="#DD6B55"
@@ -214,4 +298,4 @@ const EditUser = ({navigation, route}) => {
     </View>
   );
 };
-export default EditUser;
+export default EditDriver;

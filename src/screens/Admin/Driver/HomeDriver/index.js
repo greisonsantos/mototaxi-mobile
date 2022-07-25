@@ -28,6 +28,8 @@ const HomeDriver = props => {
     const response = await api.get('/users');
 
     const {data} = response;
+
+    console.log(data)
     setDeliverymans(data);
   };
 
@@ -52,7 +54,7 @@ const HomeDriver = props => {
   };
 
   const handleEdit = async item => {
-    props.navigation.navigate('EditUser', {
+    props.navigation.navigate('EditDriver', {
       id: item.id,
     });
   };
@@ -88,12 +90,27 @@ const HomeDriver = props => {
 
   return (
     <View style={styles.container}>
+      <Text
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{
+          color: '#000',
+          textAlign: 'center',
+          marginTop: 5,
+          fontSize: 20,
+        }}>
+        {' '}
+        MOTORISTAS{' '}
+      </Text>
       <View style={styles.search}>
         <SearchBar
           placeholder="Pesquisar ..."
+          textColor="#000"
           onChangeText={search}
-          iconColor="tranparent"
+          iconColor="#000"
+          barStyle="default"
           autoCorrect={false}
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={{height: 44, borderRadius: 10, backgroundColor: '#333'}}
         />
       </View>
 
@@ -105,9 +122,9 @@ const HomeDriver = props => {
           margin: 5,
         }}>
         <Text> </Text>
-        <Text>
+        <Text style={{color:'#000'}}>
           {' '}
-          TOTAL :{' '}
+          TOTAL DE MOTORISTAS :{' '}
           {filteredData && filteredData.length > 0
             ? filteredData.length
             : deliverymans.length}
@@ -133,7 +150,7 @@ const HomeDriver = props => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            props.navigation.navigate('NewDeliveryMan');
+            props.navigation.navigate('NewDriver');
           }}>
           <Icon name="add" size={30} color="#fff" />
         </TouchableOpacity>

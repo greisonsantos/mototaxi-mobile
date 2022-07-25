@@ -23,7 +23,7 @@ const Home = props => {
 
       <View>
         <TouchableOpacity
-          onPress={() => props.navigation.navigate('EstablishmentAdmin')}
+          onPress={() => props.navigation.navigate('HomeDriver')}
           style={styles.button}
           activeOpacity={0.5}>
           <Icon name="list" size={30} color="grey" />

@@ -31,7 +31,7 @@ const Home = props => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => props.navigation.navigate('HomeDeliveryMan')}
+          onPress={() => props.navigation.navigate('HomeClient')}
           style={styles.button}
           activeOpacity={0.5}>
           <Icon name="person" size={30} color="grey" />

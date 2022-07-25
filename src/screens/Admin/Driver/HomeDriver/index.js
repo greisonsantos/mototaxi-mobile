@@ -28,8 +28,6 @@ const HomeDriver = props => {
     const response = await api.get('/users');
 
     const {data} = response;
-
-    console.log(data)
     setDeliverymans(data);
   };
 
@@ -39,14 +37,15 @@ const HomeDriver = props => {
   };
 
   const submitDelete = async () => {
+    console.log(user_for_edit);
     const deliveryman_id = user_for_edit.id;
     const res = await api.delete(`/users/${deliveryman_id}`);
     if (res.data) {
       let new_users = deliverymans.filter(function (deliveryman) {
-        return deliveryman.id != deliveryman_id;
+        return deliveryman.id !== deliveryman_id;
       });
 
-      props.navigation.navigate('HomeAdmin');
+      props.navigation.navigate('Home');
       setDeliverymans(new_users);
     }
 

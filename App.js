@@ -10,6 +10,7 @@ const App = () => {
   return (
     <AuthProvider>
       <Routes />
+      <Toast />
     </AuthProvider>
   );
 };

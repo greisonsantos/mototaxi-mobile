@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState, useContext, useRef} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import Pulse from 'react-native-pulse';
 
@@ -9,13 +9,14 @@ import Button from '../../../components/Button';
 import styles from './styles';
 import AuthContex from '../../../contexs/auth';
 import Toast from 'react-native-simple-toast';
-
+import socket from '../../../services/ws';
 const AvaliableRaces = ({navigation}) => {
   const {user} = useContext(AuthContex);
 
   const [races, setRaces] = useState([]);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  let isRendered = useRef(false);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getRaces = async () => {
@@ -30,8 +31,28 @@ const AvaliableRaces = ({navigation}) => {
   };
 
   useEffect(() => {
-    getRaces();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    isRendered = true;
+    const unsubscribe = navigation.addListener('focus', () => {
+      getRaces();
+      socket.on('delivery', delivery => {
+        if (typeof delivery === 'string' && delivery === 'update') {
+          getRaces();
+        }
+        if (typeof delivery === 'string' && delivery === 'create') {
+          getRaces();
+        }
+        if (typeof delivery === 'string' && delivery === 'delete') {
+          getRaces();
+        }
+      });
+    });
+
+    return () => {
+      unsubscribe;
+      isRendered = false;
+    };
+  }, [navigation]);
 
   const handleGetRace = async race => {
     console.log(race.id);

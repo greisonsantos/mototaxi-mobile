@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "536556335678",
+    "project_id": "mototaxi-bd23b",
+    "storage_bucket": "mototaxi-bd23b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536556335678:android:aca1d98d4f95fa28b0576f",
+        "android_client_info": {
+          "package_name": "com.mototaxiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536556335678-i0e6o9ug00rv30njes7fvgbscqfasg50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBY6r9zcL60qdzej-DFDBFqTcY32911kQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536556335678-i0e6o9ug00rv30njes7fvgbscqfasg50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
 import io from 'socket.io-client';
-const socket = io('http://japsolucoestec.com.br:21117');
+const socket = io('http://localhost:21519');
 
 export default socket;

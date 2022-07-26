@@ -50,8 +50,8 @@ export default function Home({navigation}) {
       Toast.show({
         type: 'success',
         text1: 'Atenção',
-        text2: 'Nova Corrida cadastrada',
-        visibilityTime: 5000,
+        text2: 'Nova Corrida cadastrada! Verifique sua lista.',
+        visibilityTime: 7000,
       });
     });
     return unsubscribe;

@@ -63,10 +63,7 @@ export default function EditPersonalData({navigation}) {
       setUser(data);
       await AsyncStorage.setItem('@entrega:user', JSON.stringify(data));
 
-      navigation.reset({
-        index: 0,
-        routes: [{name: 'Profile'}],
-      });
+      navigation.navigate('Profile');
       setIsLoading(false);
       Toast.showWithGravity(
         'Atenção, Dados editado com sucesso!',

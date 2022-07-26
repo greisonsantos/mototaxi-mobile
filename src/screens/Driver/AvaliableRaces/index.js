@@ -71,7 +71,7 @@ const AvaliableRaces = ({navigation}) => {
       navigation.replace('ListRace');
       // eslint-disable-next-line no-catch-shadow
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setIsLoading(false);
       Toast.showWithGravity(
         'Atenção, Erro ao pegar Corrida! Verifique sua conexão',

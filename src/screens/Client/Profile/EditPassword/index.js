@@ -44,10 +44,7 @@ export default function EditPassword({navigation}) {
         password: password.value,
       });
 
-      navigation.reset({
-        index: 0,
-        routes: [{name: 'Profile'}],
-      });
+      navigation.navigate('Profile');
       setIsLoading(false);
       Toast.showWithGravity(
         'Atenção, Senha alterada com sucesso!',

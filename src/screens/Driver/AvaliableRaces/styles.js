@@ -18,8 +18,11 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     borderRadius: 8,
-    padding: 10,
-    margin: 10,
+    padding: 5,
+    margin: 1,
+    marginBottom: 5,
+    borderWidth: 1,
+    borderColor: '#333',
     backgroundColor: theme.colors.white,
   },
   date: {

@@ -15,8 +15,11 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     borderRadius: 8,
-    padding: 10,
-    margin: 10,
+    padding: 5,
+    margin: 1,
+    marginBottom: 5,
+    borderWidth: 1,
+    borderColor: '#333',
     backgroundColor: theme.colors.white,
   },
   strong: {
@@ -27,7 +30,7 @@ const styles = StyleSheet.create({
     padding: 5,
     color: theme.colors.black,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   status0: {
     color: '#E33a1a',

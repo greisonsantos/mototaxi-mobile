@@ -5,7 +5,7 @@ import Routes from './src/routes';
 import {AuthProvider} from './src/contexs/auth';
 import Toast from 'react-native-toast-message';
 
-StatusBar.setBarStyle('dark-content');
+StatusBar.setBarStyle('default');
 const App = () => {
   return (
     <AuthProvider>

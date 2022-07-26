@@ -75,7 +75,7 @@ const AvaliableRaces = ({navigation}) => {
             <Text style={styles.strong}>DE: </Text> {item.street_origin}
           </Text>
           <Text style={styles.text}>
-            <Text style={styles.strong}>PONTO DE REFERẼNCIA </Text>
+            <Text style={styles.strong}>PONTO DE REFERÊNCIA ORIGEM: </Text>
             {item.origin_reference}
           </Text>
           <Text style={styles.text}>

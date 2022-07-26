@@ -31,26 +31,37 @@ const ListRace = () => {
       <View>
         <View>
           <Text style={styles.date}>
-            DATA: {dateFormat(item.date, 'dd/mm/yyyy')}
+            <Text style={styles.strong}>DATA: </Text>
+            {dateFormat(item.date, 'dd/mm/yyyy')}
           </Text>
         </View>
 
         <View>
-          <Text style={styles.text}>De: {item.street_origin}</Text>
-          <Text style={styles.text}>Para: {item.street_destination}</Text>
           <Text style={styles.text}>
-            Veiculo solicitado:{' '}
-            {item.vehicle_type === 'motorcycle' ? 'Moto' : 'Carro'}
+            <Text style={styles.strong}>DE: </Text> {item.street_origin}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.strong}>PARA: </Text> {item.street_destination}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.strong}>VEICULO SOLICITADO: </Text>
+            {item.vehicle_type === 'motorcycle' ? 'MOTO' : 'CARRO'}
           </Text>
           <Text> </Text>
-          <Text style={styles.text}> Motorista: {item.full_name}</Text>
-          <Text style={styles.text}> Veiculo: {item.vehicle_description}</Text>
-          <Text style={styles.text}> Placa: {item.plate}</Text>
+          <Text style={styles.text}>
+            <Text style={styles.strong}>MOTORISTA: </Text> {item.full_name}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.strong}>VEICULO: </Text>{' '}
+            {item.vehicle_description}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.strong}>PLACA: </Text> {item.plate}
+          </Text>
 
           <Text> </Text>
           <Text style={styles.text}>
-            {' '}
-            Forma de pagamento:
+            <Text style={styles.strong}>FORMA DE PAGAMENTO: </Text>
             {item.payment_type === 'cash' && ' DINHEIRO'}
             {item.payment_type === 'card_credit' && ' CARTÃO DE CRÉDITO'}
             {item.payment_type === 'card_debit' && 'CARTÃO DE DEBITO'}
@@ -167,7 +178,7 @@ const ListRace = () => {
           showsVerticalScrollIndicator={false}
           data={races}
           renderItem={renderItem}
-          keyExtractor={item => item.race_id.toString()}
+          keyExtractor={item => item.id.toString()}
         />
       </View>
     </View>

@@ -19,11 +19,15 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: theme.colors.white,
   },
+  strong: {
+    fontWeight: 'bold',
+  },
   date: {
     fontSize: 18,
     padding: 5,
     color: theme.colors.black,
     borderBottomWidth: StyleSheet.hairlineWidth,
+    textAlign: 'center'
   },
   status0: {
     color: '#E33a1a',

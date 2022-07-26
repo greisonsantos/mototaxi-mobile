@@ -53,29 +53,28 @@ const ListRace = ({navigation}) => {
       <View>
         <View>
           <Text style={styles.date}>
-            DATA: {dateFormat(item.created_at, 'dd/mm/yyyy  HH:MM:ss')}
+            <Text style={styles.strong}>DATA: </Text>
+            {dateFormat(item.created_at, 'dd/mm/yyyy  HH:MM:ss')}
           </Text>
         </View>
 
         <View>
           <Text style={styles.text} numberOfLines={2}>
-            De: {item.street_origin}
+            <Text style={styles.strong}>DE: </Text>
+            {item.street_origin}
           </Text>
           <Text style={styles.text} numberOfLines={2}>
-            Para: {item.street_destination}
+            <Text style={styles.strong}>PARA: </Text>
+            {item.street_destination}
           </Text>
 
-          <Text></Text>
+          <Text />
           <Text style={styles.text}>
-            Veiculo solicitado:{' '}
+            <Text style={styles.strong}>VEICULO SOLICITADO: </Text>
             {item.vehicle_type === 'motorcycle' ? 'Moto' : 'Carro'}
           </Text>
-
-          <Text></Text>
-
           <Text style={styles.text}>
-            {' '}
-            Forma de pagamento:
+            <Text style={styles.strong}>FORMA DE PAGAMENTO </Text>
             {item.payment_type === 'cash' && ' DINHEIRO'}
             {item.payment_type === 'card_credit' && ' CARTÃO DE CRÉDITO'}
             {item.payment_type === 'card_debit' && 'CARTÃO DE DEBITO'}
@@ -96,29 +95,38 @@ const ListRace = ({navigation}) => {
           <View style={styles.cardContainer}>
             <View>
               <Text style={styles.date}>
-                DATA :{' '}
+                <Text style={styles.strong}>DATA: </Text>
                 {dateFormat(current_race.created_at, 'dd/mm/yyyy  HH:MM:ss')}
               </Text>
             </View>
             <View>
               <View>
                 <Text style={styles.text}>
-                  {' '}
-                  DE: {current_race?.street_origin}
+                  <Text style={styles.strong}>DE: </Text>
+                  {current_race?.street_origin}
                 </Text>
 
-                <Text> </Text>
+                <Text />
 
                 <Text style={styles.text}>
-                  {' '}
-                  PARA: {current_race?.street_destination}
+                  <Text style={styles.strong}>PARA: </Text>
+                  {current_race?.street_destination}
                 </Text>
-                <Text> </Text>
+                <Text />
                 <Text style={styles.text}>
-                  Tipo de Veiculo:{' '}
+                  <Text style={styles.strong}>TIPO DE VEICULO: </Text>
                   {current_race?.vehicle_type === 'motorcycle'
-                    ? 'Moto'
-                    : 'Carro'}
+                    ? 'MOTO'
+                    : 'CARRO'}
+                </Text>
+                <Text style={styles.text}>
+                  <Text style={styles.strong}>FORMA DE PAGAMENTO </Text>
+                  {current_race.payment_type === 'cash' && ' DINHEIRO'}
+                  {current_race.payment_type === 'card_credit' &&
+                    ' CARTÃO DE CRÉDITO'}
+                  {current_race.payment_type === 'card_debit' &&
+                    'CARTÃO DE DEBITO'}
+                  {current_race.payment_type === 'pix' && ' PIX'}
                 </Text>
                 <Text> </Text>
               </View>
@@ -132,13 +140,14 @@ const ListRace = ({navigation}) => {
                     duration={60000}
                   />
                   <Text style={{color: '#560CCE', textAlign: 'center'}}>
-                    {' '}
-                    DIGIRA-SE ATÉ O LOCAL PARA PEGAR O PASSAGEIRO
+                    <Text style={styles.strong}>
+                      DIGIRA-SE ATÉ O LOCAL PARA PEGAR O PASSAGEIRO:
+                    </Text>
                   </Text>
                 </>
               </View>
               <Button mode="contained" onPress={handleFinalRace}>
-                Finalizar
+                Finalizar corrida
               </Button>
             </View>
           </View>
@@ -152,7 +161,7 @@ const ListRace = ({navigation}) => {
           showsVerticalScrollIndicator={false}
           data={races}
           renderItem={renderItem}
-          keyExtractor={item => item.race_id.toString()}
+          keyExtractor={item => item.id.toString()}
         />
       </View>
     </View>

@@ -71,37 +71,55 @@ const ListRace = () => {
           <View style={styles.cardContainer}>
             <View>
               <Text style={styles.date}>
-                DATA:{' '}
+                <Text style={styles.strong}>DATA: </Text>
                 {dateFormat(current_race.created_at, 'dd/mm/yyyy  HH:MM:ss')}
               </Text>
             </View>
             <View>
               <View>
                 <Text style={styles.text}>
-                  {' '}
-                  De: {current_race?.street_origin}
+                  <Text style={styles.strong}>DE: </Text>
+                  {current_race?.street_origin}
                 </Text>
                 <Text style={styles.text}>
-                  {' '}
-                  Para: {current_race?.street_destination}
+                  <Text style={styles.strong}>PARA: </Text>
+                  {current_race?.street_destination}
                 </Text>
                 <Text> </Text>
                 <Text style={styles.text}>
-                  Tipo de Veiculo:{' '}
+                  <Text style={styles.strong}>Tipo de Veiculo: </Text>
                   {current_race?.vehicle_type === 'motorcycle'
-                    ? 'Moto'
-                    : 'Carro'}
+                    ? 'MOTO'
+                    : 'CARRO'}
+                </Text>
+                <Text style={styles.text}>
+                  <Text style={styles.strong}>Forma de pagamento: </Text>
+                  {current_race.payment_type === 'cash' && ' DINHEIRO'}
+                  {current_race.payment_type === 'card_credit' &&
+                    ' CARTÃO DE CRÉDITO'}
+                  {current_race.payment_type === 'card_debit' &&
+                    'CARTÃO DE DEBITO'}
+                  {current_race.payment_type === 'pix' && ' PIX'}
                 </Text>
                 <Text> </Text>
                 {current_race.status === '2' && (
                   <>
                     <Text style={styles.text}>
-                      Motorista: {current_race.full_name}
+                      <Text style={styles.strong}>MOTORISTA: </Text>
+                      {current_race.full_name}
                     </Text>
                     <Text style={styles.text}>
-                      Veiculo: {current_race.vehicle_description}
+                      <Text style={styles.strong}>VEICULO: </Text>
+                      {current_race.vehicle_description}
                     </Text>
-                    <Text style={styles.text}>Placa: {current_race.plate}</Text>
+                    <Text style={styles.text}>
+                      <Text style={styles.strong}>COR: </Text>
+                      {current_race.color}
+                    </Text>
+                    <Text style={styles.text}>
+                      <Text style={styles.strong}>PLACA: </Text>
+                      {current_race.plate}
+                    </Text>
                   </>
                 )}
               </View>
@@ -116,8 +134,7 @@ const ListRace = () => {
                       duration={60000}
                     />
                     <Text style={{color: '#560CCE', textAlign: 'center'}}>
-                      {' '}
-                      PROCURANDO MOTORISTA
+                      <Text style={styles.strong}>PROCURANDO MOTORISTA </Text>
                     </Text>
                   </>
                 ) : (
@@ -131,8 +148,9 @@ const ListRace = () => {
                       duration={60000}
                     />
                     <Text style={{color: '#560CCE', textAlign: 'center'}}>
-                      {' '}
-                      MOTORISTA A CAMINHO AGUARDE NO LOCAL
+                      <Text style={styles.strong}>
+                        MOTORISTA A CAMINHO AGUARDE NO LOCAL{' '}
+                      </Text>
                     </Text>
                   </>
                 )}

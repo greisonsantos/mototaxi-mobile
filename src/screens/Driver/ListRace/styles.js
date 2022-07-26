@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
   text: {
     color: '#000',
   },
+  strong: {
+    fontWeight: 'bold',
+  },
   cardContainer: {
     borderRadius: 8,
     padding: 10,
@@ -24,6 +27,7 @@ const styles = StyleSheet.create({
     padding: 5,
     color: theme.colors.black,
     borderBottomWidth: StyleSheet.hairlineWidth,
+    textAlign: 'center',
   },
   status0: {
     color: '#E33a1a',

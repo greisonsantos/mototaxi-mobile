@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     width: '50%',
     backgroundColor: '#808080',
     borderRadius: 20,
-    margin: 5,
+    margin: 10,
+    padding: 5,
   },
   viewIcon: {
     alignItems: 'flex-start',

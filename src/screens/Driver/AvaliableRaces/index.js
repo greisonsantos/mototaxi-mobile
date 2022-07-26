@@ -31,12 +31,13 @@ const AvaliableRaces = ({navigation}) => {
 
   useEffect(() => {
     getRaces();
-  }, [getRaces]);
+  }, []);
 
   const handleGetRace = async race => {
+    console.log(race.id);
     setIsLoading(true);
     try {
-      await api.put(`/races/${race.id}`, {
+      await api.put(`/races/${race.race_id}`, {
         status: 2,
       });
 
@@ -49,6 +50,7 @@ const AvaliableRaces = ({navigation}) => {
       navigation.replace('ListRace');
       // eslint-disable-next-line no-catch-shadow
     } catch (error) {
+      console.log(error)
       setIsLoading(false);
       Toast.showWithGravity(
         'Atenção, Erro ao pegar Corrida! Verifique sua conexão',
@@ -63,25 +65,31 @@ const AvaliableRaces = ({navigation}) => {
       <View>
         <View>
           <Text style={styles.date}>
-            DATA: {dateFormat(item.created_at, 'dd/mm/yyyy  HH:MM:ss')}
+            <Text style={styles.strong}>DATA: </Text>
+            {dateFormat(item.created_at, 'dd/mm/yyyy  HH:MM:ss')}
           </Text>
         </View>
 
         <View>
-          <Text style={styles.text}>De: {item.street_origin}</Text>
           <Text style={styles.text}>
-            Ponto de referência: {item.origin_reference}
+            <Text style={styles.strong}>DE: </Text> {item.street_origin}
           </Text>
-          <Text style={styles.text}>Para: {item.street_destination}</Text>
-          <Text style={{}}> </Text>
           <Text style={styles.text}>
-            Veiculo solicitado:{' '}
-            {item.vehicle_type === 'motorcycle' ? 'Moto' : 'Carro'}
+            <Text style={styles.strong}>PONTO DE REFERẼNCIA </Text>
+            {item.origin_reference}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.strong}>PARA: </Text>
+            {item.street_destination}
+          </Text>
+          <Text> </Text>
+          <Text style={styles.text}>
+            <Text style={styles.strong}>VEICULO SOLICITADO: </Text>
+            {item.vehicle_type === 'motorcycle' ? 'MOTO' : 'CARRO'}
           </Text>
 
           <Text style={styles.text}>
-            {' '}
-            Forma de pagamento:
+            <Text style={styles.strong}>FORMA DE PAGAMENTO: </Text>
             {item.payment_type === 'cash' && ' DINHEIRO'}
             {item.payment_type === 'card_credit' && ' CARTÃO DE CRÉDITO'}
             {item.payment_type === 'card_debit' && 'CARTÃO DE DEBITO'}

@@ -52,13 +52,7 @@ export default function Home({navigation}) {
               // eslint-disable-next-line react-native/no-inline-styles
               style={{width: 115, height: 120, top: 10, resizeMode: 'contain'}}
             />
-            <Text style={styles.text}> Solicitar Moto</Text>
-            <Icon
-              style={styles.icon}
-              name="arrow-right"
-              size={30}
-              color="#FFF"
-            />
+            <Text style={styles.text}> SOLICITAR MOTO</Text>
           </View>
         </TouchableOpacity>
 
@@ -78,13 +72,7 @@ export default function Home({navigation}) {
               // eslint-disable-next-line react-native/no-inline-styles
               style={{width: 130, height: 120, resizeMode: 'contain'}}
             />
-            <Text style={styles.text}> Solicitar Carro</Text>
-            <Icon
-              style={styles.icon}
-              name="arrow-right"
-              size={30}
-              color="#FFF"
-            />
+            <Text style={styles.text}> SOLICITAR CARRO</Text>
           </View>
         </TouchableOpacity>
       </View>

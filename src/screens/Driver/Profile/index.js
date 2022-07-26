@@ -31,14 +31,16 @@ const Profile = props => {
         <View style={styles.nameContainer}>
           {console.log(user)}
           <Text numberOfLines={2} style={styles.name}>
-            {user?.full_name}
+            {'Motorista: '} {user?.full_name}
           </Text>
-          <Text style={styles.name}> {user?.email}</Text>
           <Text style={styles.name}>
-            {' '}
+            {'Carro: '}
             {user?.vehicle_description}, {user?.color}
           </Text>
-          <Text style={styles.name}> {user?.plate}</Text>
+          <Text style={styles.name}>
+            {'Placa:'}
+            {user?.plate}
+          </Text>
         </View>
 
         <View style={styles.nav}>

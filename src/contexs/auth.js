@@ -1,7 +1,7 @@
 import React, {createContext, useState, useEffect} from 'react';
 
 import AsyncStorage from '@react-native-community/async-storage';
-import {View, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator, Alert} from 'react-native';
 
 import api from '../services/api';
 const jwtDecode = require('jwt-decode');

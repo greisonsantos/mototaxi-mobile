@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import Pulse from 'react-native-pulse';
 
-import Header from '../../../components/Header';
+import Paragraph from '../../../components/Paragraph';
 import api from '../../../services/api';
 import dateFormat from 'dateformat';
 
@@ -87,7 +87,7 @@ const ListRace = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View>
-        <Header> CORRIDAS EM ANDAMENTO</Header>
+        <Paragraph> CORRIDAS EM ANDAMENTO</Paragraph>
         {!current_race && (
           <Text style={styles.textTitle}> Nenhuma corrida encontrada</Text>
         )}
@@ -133,13 +133,13 @@ const ListRace = ({navigation}) => {
               <View style={{justifyContent: 'center'}}>
                 <>
                   <Pulse
-                    color="#560CCE"
+                    color="#87bd43"
                     numPulses={2}
                     diameter={80}
                     speed={10}
                     duration={60000}
                   />
-                  <Text style={{color: '#560CCE', textAlign: 'center'}}>
+                  <Text style={{color: '#87bd43', textAlign: 'center'}}>
                     <Text style={styles.strong}>
                       DIGIRA-SE ATÉ O LOCAL PARA PEGAR O PASSAGEIRO:
                     </Text>
@@ -154,7 +154,7 @@ const ListRace = ({navigation}) => {
         )}
       </View>
 
-      <Header> CORRIDAS FINALIZADAS {races.length}</Header>
+      <Paragraph> CORRIDAS FINALIZADAS {races.length}</Paragraph>
 
       <View style={styles.container}>
         <FlatList

@@ -31,14 +31,14 @@ const Profile = props => {
         <View style={styles.nameContainer}>
           {console.log(user)}
           <Text numberOfLines={2} style={styles.name}>
-            {'Motorista: '} {user?.full_name}
+            {'MOTORISTA: '} {user?.full_name}
           </Text>
           <Text style={styles.name}>
-            {'Carro: '}
+            {'VEICULO: '}
             {user?.vehicle_description}, {user?.color}
           </Text>
           <Text style={styles.name}>
-            {'Placa:'}
+            {'PLACE: '}
             {user?.plate}
           </Text>
         </View>
@@ -53,7 +53,7 @@ const Profile = props => {
               style={styles.navIcon}
               name="lock"
               size={15}
-              color="#560CCE"
+              color="#87bd43"
             />
             <Text style={styles.navText}> Trocar senha</Text>
           </TouchableOpacity>

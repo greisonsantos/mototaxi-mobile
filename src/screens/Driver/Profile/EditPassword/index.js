@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {StyleSheet, ScrollView, Keyboard} from 'react-native';
 import Background from '../../../../components/Background';
-import Header from '../../../../components/Header';
+import Paragraph from '../../../../components/Paragraph';
 import Button from '../../../../components/Button';
 import TextInput from '../../../../components/TextInput';
 import {theme} from '../../../../core/theme';
@@ -71,7 +71,7 @@ export default function EditPassword({navigation}) {
   return (
     <Background>
       <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
-        <Header>Editar Senha</Header>
+        <Paragraph>ALTERRA SENHA</Paragraph>
         <TextInput
           label="Senha"
           returnKeyType="done"

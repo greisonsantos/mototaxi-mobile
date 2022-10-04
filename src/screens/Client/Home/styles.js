@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
   },
   card: {
-    width: '50%',
-    backgroundColor: '#808080',
+    width: '47%',
+    backgroundColor: theme.colors.primary,
     borderRadius: 20,
     margin: 10,
     padding: 5,

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     color: '#E33a1a',
   },
   status1: {
-    color: '#4169E1',
+    color: '#87bd43',
   },
   status2: {
     color: '#87bd43',

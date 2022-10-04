@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext, useRef} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import Pulse from 'react-native-pulse';
 
-import Header from '../../../components/Header';
+import Paragraph from '../../../components/Paragraph';
 import api from '../../../services/api';
 import dateFormat from 'dateformat';
 import Button from '../../../components/Button';
@@ -138,7 +138,7 @@ const AvaliableRaces = ({navigation}) => {
   );
   return (
     <View style={styles.container}>
-      <Header> CORRIDAS DISPONIVEIS : {races?.length}</Header>
+      <Paragraph> CORRIDAS DISPONIVEIS : {races?.length}</Paragraph>
 
       <View style={styles.container}>
         <FlatList

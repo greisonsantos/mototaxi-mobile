@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 
   navText: {
     fontSize: 18,
-    color: '#560CCE',
+    color: '#87bd43',
     paddingLeft: 5,
   },
 
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.dark,
     justifyContent: 'center',
-    backgroundColor: '#560CCE',
+    backgroundColor: '#87bd43',
     borderRadius: 5,
     alignItems: 'center',
     padding: 12,

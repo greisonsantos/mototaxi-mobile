@@ -87,17 +87,17 @@ export default function Home({navigation}) {
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
           fontWeight: 'bold',
-          color: theme.colors.primary,
+          color: theme.colors.black,
           fontSize: 23,
         }}
         numberOfLines={1}>
-        Bem vindo !
+        BEM VINDO!
       </Text>
       <Text
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
           fontWeight: 'bold',
-          color: theme.colors.primary,
+          color: theme.colors.black,
           fontSize: 18,
         }}>
         {user?.full_name}
@@ -127,7 +127,7 @@ export default function Home({navigation}) {
                   resizeMode: 'contain',
                 }}
               />
-              <Text style={styles.text}> CORRIDAS DISPONIVEIS</Text>
+              <Text style={styles.text2}> CORRIDAS DISPONIVEIS</Text>
               <Image
                 source={require('../../../assets/image-car.png')}
                 // eslint-disable-next-line react-native/no-inline-styles
@@ -144,11 +144,11 @@ export default function Home({navigation}) {
       </View>
 
       <Button mode="outlined" onPress={() => navigation.navigate('ListRace')}>
-        Minhas Corridas
+        <Text style={styles.text}> Minhas Corridas </Text>
       </Button>
 
       <Button mode="outlined" onPress={() => navigation.navigate('Profile')}>
-        Perfil
+        <Text style={styles.text}> Perfil </Text>
       </Button>
     </Background>
   );

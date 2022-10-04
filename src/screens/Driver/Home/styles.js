@@ -6,7 +6,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
-    color: theme.colors.primary,
+    color: theme.colors.white,
+    fontWeight: 'bold',
+  },
+  text2: {
+    color: theme.colors.black,
     fontWeight: 'bold',
   },
   card: {

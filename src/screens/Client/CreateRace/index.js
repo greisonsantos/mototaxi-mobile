@@ -4,7 +4,6 @@ import {addressValidator} from '../../../helpers/validator';
 import Background from '../../../components/Background';
 import Button from '../../../components/Button';
 
-import Header from '../../../components/Header';
 import TextInput from '../../../components/TextInput';
 import api from '../../../services/api';
 import Toast from 'react-native-simple-toast';
@@ -125,7 +124,7 @@ const CreateRace = props => {
           />
         </View>
 
-        <Header> Endereço de destino </Header>
+        <Text style={styles.text}>Endereço de destino</Text>
         <View>
           <TextInput
             label="Endereço completo"

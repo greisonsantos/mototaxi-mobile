@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import AuthContex from '../../../contexs/auth';
 import Background from '../../../components/Background';
 import noImage from '../../../assets/noImage.png';
+import {theme} from '../../../core/theme';
 
 import styles from './styles';
 
@@ -48,7 +49,7 @@ const Profile = props => {
               style={styles.navIcon}
               name="file"
               size={15}
-              color="#560CCE"
+              color={`${theme.colors.primary}`}
             />
             <Text style={styles.navText}> Dados pessoais</Text>
           </TouchableOpacity>
@@ -62,7 +63,7 @@ const Profile = props => {
               style={styles.navIcon}
               name="lock"
               size={15}
-              color="#560CCE"
+              color={`${theme.colors.primary}`}
             />
             <Text style={styles.navText}> Trocar senha</Text>
           </TouchableOpacity>

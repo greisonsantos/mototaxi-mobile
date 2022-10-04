@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, Alert} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Background from '../../../components/Background';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import Button from '../../../components/Button';
 import AuthContex from '../../../contexs/auth';
 import styles from './styles';
@@ -79,9 +78,6 @@ export default function Home({navigation}) {
       Alert.alert('Erro interno, tente novamente mais tarde');
     }
   }
-  const handlesignOut = () => {
-    signOut();
-  };
 
   return (
     <Background>
@@ -89,7 +85,7 @@ export default function Home({navigation}) {
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
           fontWeight: 'bold',
-          color: theme.colors.primary,
+          color: theme.colors.black,
           fontSize: 23,
         }}
         numberOfLines={1}>
@@ -99,7 +95,7 @@ export default function Home({navigation}) {
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
           fontWeight: 'bold',
-          color: theme.colors.primary,
+          color: theme.colors.black,
           fontSize: 18,
         }}>
         {user?.full_name}
@@ -126,7 +122,7 @@ export default function Home({navigation}) {
         </TouchableOpacity>
 
         <TouchableOpacity
-          disabled={false}
+          disabled={true}
           onPress={() => {
             navigation.navigate('CreateRace', {
               parmas: {
@@ -146,12 +142,12 @@ export default function Home({navigation}) {
         </TouchableOpacity>
       </View>
 
-      <Button mode="outlined" onPress={() => navigation.navigate('ListRace')}>
-        Minhas Corridas
+      <Button mode="contain" onPress={() => navigation.navigate('ListRace')}>
+        <Text style={styles.text}> Minhas Corridas</Text>
       </Button>
 
       <Button mode="outlined" onPress={() => navigation.navigate('Profile')}>
-        Perfil
+        <Text style={styles.text}> Perfil</Text>
       </Button>
     </Background>
   );

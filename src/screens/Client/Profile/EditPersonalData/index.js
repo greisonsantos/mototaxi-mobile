@@ -3,7 +3,7 @@ import {ScrollView, Keyboard} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import Background from '../../../../components/Background';
-import Header from '../../../../components/Header';
+import Paragraph from '../../../../components/Paragraph';
 import Button from '../../../../components/Button';
 import TextInput from '../../../../components/TextInput';
 import {
@@ -93,7 +93,7 @@ export default function EditPersonalData({navigation}) {
   return (
     <Background>
       <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
-        <Header>Editar dados</Header>
+        <Paragraph>Editar dados</Paragraph>
         <TextInput
           label="Nome completo"
           returnKeyType="next"

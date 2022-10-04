@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import Pulse from 'react-native-pulse';
 
-import Header from '../../../components/Header';
+import Paragraph from '../../../components/Paragraph';
 import api from '../../../services/api';
 import dateFormat from 'dateformat';
 
@@ -74,7 +74,7 @@ const ListRace = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Header> CORRIDAS EM ANDAMENTO</Header>
+        <Paragraph> CORRIDAS EM ANDAMENTO</Paragraph>
         {!current_race && (
           <Text style={styles.textTitle}> Nenhuma corrida encontrada</Text>
         )}
@@ -138,13 +138,13 @@ const ListRace = () => {
                 {current_race.status === '1' ? (
                   <>
                     <Pulse
-                      color="#560CCE"
+                      color="#87bd43"
                       numPulses={2}
                       diameter={80}
                       speed={10}
                       duration={60000}
                     />
-                    <Text style={{color: '#560CCE', textAlign: 'center'}}>
+                    <Text style={{color: '#000', textAlign: 'center'}}>
                       <Text style={styles.strong}>PROCURANDO MOTORISTA </Text>
                     </Text>
                   </>
@@ -152,13 +152,13 @@ const ListRace = () => {
                   <>
                     <Text> </Text>
                     <Pulse
-                      color="#560CCE"
+                      color="#87bd43"
                       numPulses={2}
                       diameter={80}
                       speed={10}
                       duration={60000}
                     />
-                    <Text style={{color: '#560CCE', textAlign: 'center'}}>
+                    <Text style={{color: '#000', textAlign: 'center'}}>
                       <Text style={styles.strong}>
                         MOTORISTA A CAMINHO AGUARDE NO LOCAL{' '}
                       </Text>
@@ -171,7 +171,7 @@ const ListRace = () => {
         )}
       </View>
 
-      <Header> CORRIDAS FINALIZADAS {races.length}</Header>
+      <Paragraph> CORRIDAS FINALIZADAS {races.length}</Paragraph>
 
       <View style={styles.container}>
         <FlatList

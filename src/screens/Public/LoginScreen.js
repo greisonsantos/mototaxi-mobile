@@ -3,7 +3,7 @@ import {TouchableOpacity, StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import Background from '../../components/Background';
 import Logo from '../../components/Logo';
-import Header from '../../components/Header';
+import Paragraph from '../../components/Paragraph';
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
 import {theme} from '../../core/theme';
@@ -53,7 +53,7 @@ export default function LoginScreen({navigation}) {
   return (
     <Background>
       <Logo />
-      <Header>Bem vindo de volta!</Header>
+      <Paragraph>BEM VINDO DE VOLTA!</Paragraph>
 
       {error && (
         // eslint-disable-next-line react-native/no-inline-styles
@@ -120,10 +120,10 @@ const styles = StyleSheet.create({
   },
   forgot: {
     fontSize: 13,
-    color: theme.colors.secondary,
+    color: theme.colors.white,
   },
   link: {
     fontWeight: 'bold',
-    color: theme.colors.primary,
+    color: theme.colors.black,
   },
 });
